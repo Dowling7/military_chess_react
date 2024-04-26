@@ -1,0 +1,57 @@
+.app {
+    max-width: 800px;
+    margin: 20px auto;
+    text-align: center;
+    font-family: Arial, sans-serif;
+  }
+  
+.board{
+  position: relative;
+  width:600px;
+  height:800px;
+  background:url("./map.png");
+  border:2px solid #ca0000;
+  background-size: cover;
+  background-position: center
+}
+
+
+.piece {
+  position: absolute;
+  width: 40px; 
+  height: 40px; 
+  background-color: red; 
+  color: white; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+  
+  /* Styles for each space on the board */
+  .space {
+    width: 80px;
+    height: 80px;
+    background-color: #f0f0f0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border: 2px solid #ddd;
+    position: relative;
+  }
+  
+  .space.occupied {
+    background-color: #d4eefd;
+  }
+  
+
+  
+  .group0 {
+    background-color: #007bff; /* Color for one group */
+  }
+  
+  .group1 {
+    background-color: #dc3545; /* Color for another group */
+  }
+  

@@ -5,6 +5,14 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-image: url('./ww1.jpg'); /* Ensure the path is correct */
+  background-size: cover; /* Cover the entire page */
+  background-position: center; /* Center the background image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  margin: 0; /* Remove default margin */
+  height: 100vh; /* Full viewport height */
+  width: 100vw; /* Full viewport width */
+  opacity: 0.8;
 }
 
 code {
