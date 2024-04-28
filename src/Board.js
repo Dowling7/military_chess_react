@@ -1,91 +1,50 @@
-// Board.js
 import React, { useState, useEffect } from 'react';
 import Piece from './Piece';
 
-const initialPieces = Array(60).fill(null); // Adjusted for a board with 60 pieces
-const cssPosHori = [10, 104, 198, 293, 386];
-const cssPosVer = [12, 59, 107, 155, 202, 250, 350, 398, 445, 493, 541, 588];
-
-function Board() {
-  const [pieces, setPieces] = useState([...initialPieces]);
-  const [selectedPiece, setSelectedPiece] = useState(null);
-  const [turn, setTurn] = useState(0);
-  const [gameOver, setGameOver] = useState(false);
-
-  const handlePieceClick = (index) => {
-    if (gameOver) return;
-
-    const piece = pieces[index];
-    if (!piece) {
-      if (selectedPiece && canMove(selectedPiece.position, index)) {
-        movePiece(selectedPiece.position, index);
-      }
-    } else {
-      if (piece.group === turn) {
-        setSelectedPiece(piece);
-      } else if (selectedPiece) {
-        attack(selectedPiece.position, index);
-      }
-    }
-  };
-
-  const movePiece = (from, to) => {
-    const newPieces = [...pieces];
-    newPieces[to] = newPieces[from];
-    newPieces[from] = null;
-    setPieces(newPieces);
-    setSelectedPiece(null);
-    changeTurn();
-  };
-
-  const attack = (from, to) => {
-    const newPieces = [...pieces];
-    if (newPieces[to].strength <= newPieces[from].strength) {
-      newPieces[to] = newPieces[from];
-    }
-    newPieces[from] = null;
-    setPieces(newPieces);
-    setSelectedPiece(null);
-    changeTurn();
-  };
-
-  const canMove = (from, to) => {
-    // Implement logic based on the game rules
-    return true;
-  };
-
-  const changeTurn = () => {
-    setTurn((turn) => 1 - turn);
-  };
-
-  const setupBoard = () => {
-    const newPieces = pieces.map((_, index) => ({
-      position: index,
-      group: Math.random() < 0.5 ? 0 : 1,
-      strength: Math.floor(Math.random() * 10),
-    }));
-    setPieces(newPieces);
-  };
+const Board = () => {
+  const [board, setBoard] = useState([]);
+  const [pieces, setPieces] = useState({
+    red: [-1, -1, 0, 1, 1, 1, 2, 2, 2, 3, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 9],
+    black: [-1, -1, 0, 1, 1, 1, 2, 2, 2, 3, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 9]
+  });
 
   useEffect(() => {
-    setupBoard();
+    initializeBoard();
   }, []);
+
+  const initializeBoard = () => {
+    let newBoard = new Array(5).fill(null).map(() => new Array(13).fill(null));
+    setBoard(newBoard);
+    shuffleAndAssignPieces();
+  };
+
+  const shuffleAndAssignPieces = () => {
+    let redPieces = shuffleArray([...pieces.red]);
+    let blackPieces = shuffleArray([...pieces.black]);
+    let initBoard = [...board];
+    // Implement your logic to assign pieces to the board
+    setBoard(initBoard);
+  };
+
+  const shuffleArray = (array) => {
+    for (let i = array.length - 1; i > 0; i--) {
+      let j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
+  };
 
   return (
     <div className="board">
-      {pieces.map((piece, index) => (
-        <Piece
-          key={index}
-          piece={piece}
-          onClick={() => handlePieceClick(index)}
-          style={{
-            left: `${cssPosHori[index % 5]}px`,  // Column based on index modulus 5
-            top: `${cssPosVer[Math.floor(index / 5)]}px`   // Calculating vertical position
-          }}
-        />
+      {board.map((row, rowIndex) => (
+        <div key={rowIndex} className="row">
+          {row.map((cell, cellIndex) => (
+            <Piece key={cellIndex} piece={cell} />
+          ))}
+        </div>
       ))}
     </div>
   );
-}
+};
 
 export default Board;

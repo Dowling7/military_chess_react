@@ -1,16 +1,11 @@
-// Piece.js
 import React from 'react';
 
-function Piece({ piece, onClick }) {
+const Piece = ({ piece }) => {
   return (
-    <div className={`space ${piece ? 'occupied' : ''}`} onClick={onClick}>
-      {piece && (
-        <span className={`piece ${piece.group === 0 ? 'group0' : 'group1'}`}>
-          {piece.strength}
-        </span>
-      )}
+    <div className="cell">
+      {piece !== null ? `Piece: ${piece}` : ""}
     </div>
   );
-}
+};
 
 export default Piece;
