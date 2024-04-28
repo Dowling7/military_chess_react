@@ -18,7 +18,7 @@ const Piece = ({ piece }) => {
   console.log(piece); // Check what piece data is being received.
 
   if (!piece) {
-    return <div className="cell">No piece</div>; // Handles null or undefined cases.
+    return <div className="cell"></div>; // Handles null or undefined cases.
   }
 
   const displayText = pieceMappings[piece.value]?.display || 'Unknown'; // Safe access with fallback.

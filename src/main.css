@@ -9,7 +9,7 @@
   position: relative;
   width: 600px;  /* Adjust width as per cell count and total desired width */
   height: 800px; /* Adjust height as per cell count and total desired height */
-  background: url("./map.png") no-repeat center center;
+  background: url("./blanc_map.png") no-repeat center center;
   background-size: cover;
   border: 2px solid #ca0000;
   display: grid;
