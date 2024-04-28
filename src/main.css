@@ -5,53 +5,32 @@
     font-family: Arial, sans-serif;
   }
   
-.board{
+.board {
   position: relative;
-  width:600px;
-  height:800px;
-  background:url("./map.png");
-  border:2px solid #ca0000;
+  width: 600px;  /* Adjust width as per cell count and total desired width */
+  height: 800px; /* Adjust height as per cell count and total desired height */
+  background: url("./map.png") no-repeat center center;
   background-size: cover;
-  background-position: center
+  border: 2px solid #ca0000;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr); /* 12 columns */
+  grid-template-rows: repeat(5, 1fr); /* 5 rows */
+  gap: 1px; /* Optional, adds a small gap between cells */
 }
 
-
-.piece {
-  position: absolute;
-  width: 40px; 
-  height: 40px; 
-  background-color: red; 
-  color: white; 
+.cell {
+  width: 120px;  /* Full width of the grid column */
+  height: 61.5px; /* Full height of the grid row */
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-  
-  /* Styles for each space on the board */
-  .space {
-    width: 80px;
-    height: 80px;
-    background-color: #f0f0f0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    border: 2px solid #ddd;
-    position: relative;
-  }
-  
-  .space.occupied {
-    background-color: #d4eefd;
-  }
-  
+.red {
+  color:red;
+  align-items: center;
+}
 
-  
-  .group0 {
-    background-color: #007bff; /* Color for one group */
-  }
-  
-  .group1 {
-    background-color: #dc3545; /* Color for another group */
-  }
-  
+.black {
+  color:black;
+}
