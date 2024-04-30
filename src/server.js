@@ -27,7 +27,7 @@ app.set('views', path.join(__dirname, '..', 'views'));
 app.set('view engine', 'ejs');
 
 // Middleware
-app.use(favicon(path.join(__dirname, '..', 'public/img/favicon.ico')));
+app.use(favicon(path.join(__dirname, '..', 'public/img/react-icons.svg')));
 app.use(logger('dev'));
 app.use(methodOverride());
 app.use(session({
