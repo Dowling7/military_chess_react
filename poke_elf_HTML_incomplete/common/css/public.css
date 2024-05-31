@@ -1,0 +1,62 @@
+* {
+	font-family: 微软雅黑;
+	font-size: 12px;
+	box-sizing: content-box;
+}
+
+.fr {
+	float: right;
+}
+
+.fl {
+	float: left;
+}
+
+.clearfix:after,
+.clearfix:before {
+	content: "";
+	display: block;
+	clear: both;
+}
+
+ul {
+	margin: 0;
+	padding: 0;
+}
+
+li {
+	list-style: none;
+	/* 兼容某些浏览器 */
+	font-size: 0;
+}
+
+.form-inline {
+    display: inline-block;
+}
+
+.form-block {
+	display: block;
+	padding-bottom: 20px;
+}
+
+.form-block > label {
+	display: block;
+	margin-bottom: 5px;
+}
+
+input, button {
+	outline: none;
+	border: none;
+}
+
+.success {
+	color: green;
+}
+
+.error {
+	color: red;
+}
+
+.none {
+	display: none;
+}
